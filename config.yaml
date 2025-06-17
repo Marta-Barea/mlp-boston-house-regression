@@ -1,5 +1,6 @@
 data_ path: "data/housing.csv"
 model_output_path: "models"
+checkpoints_output_path: "checkpoints"
 
 seed: 42
 train_test_split: 0.3
