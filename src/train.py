@@ -13,6 +13,7 @@ from sklearn.metrics import make_scorer, mean_absolute_error
 
 from src.data_loader import load_data
 from src.build_model import build_model
+from .utils.plot_metrics import plot_metrics
 
 from .config import (
     SEED,
@@ -86,7 +87,7 @@ def train_model():
     )
 
     print("🚀 Training final models...")
-    final_model.fit(
+    results = final_model.fit(
         X_train_scaled, y_train,
         validation_split=0.2,
         epochs=best_params["epochs"],
@@ -94,6 +95,8 @@ def train_model():
         callbacks=[checkpoint_cb],
         verbose=1
     )
+
+    plot_metrics(results)
 
     final_model.load_weights(str(ckpt_path))
 

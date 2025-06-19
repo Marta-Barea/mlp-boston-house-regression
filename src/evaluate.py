@@ -7,6 +7,7 @@ import tensorflow as tf
 from sklearn.metrics import mean_absolute_error
 
 from src.data_loader import load_data
+from .utils.plot_regression_scatter import plot_regression_scatter
 from src.config import MODEL_OUTPUT_PATH
 
 
@@ -46,6 +47,9 @@ def evaluate_model(model_path: str | None = None):
     print("🔎 First 10 predictions vs. actual values:")
     for pred, actual in zip(y_test_pred[:10], y_test[:10]):
         print(f"   • Predicted: {pred:.2f}, Actual: {actual:.2f}")
+
+    print("\n📈 Plotting regression scatter plot...")
+    plot_regression_scatter(y_test, y_test_pred)
 
 
 if __name__ == "__main__":
