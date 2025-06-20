@@ -1,0 +1,14 @@
+version: '2.3'
+
+services:
+  mlp-boston-house-prices:
+    image: mlp-boston-house-prices:latest
+    container_name: mlp-boston-house-prices
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./reports:/app/reports
+      - ./models:/app/models
+      - ./checkpoints:/app/checkpoints
+    command: python run_all.py
